@@ -204,7 +204,7 @@ def main():
     print("loading the img")
     img = cv.imread(f"img/{fileName}")
     
-    cv.imwrite("result/before.png", img)
+    cv.imwrite("before.png", img)
     
     height = img.shape[0]
     width = img.shape[1]

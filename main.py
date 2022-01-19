@@ -201,7 +201,11 @@ def k_means_img(data, k_value):
 def main():
     fileName = sys.argv[1]
 
+    print("loading the img")
     img = cv.imread(f"img/{fileName}")
+    
+    cv.imwrite("result/before.png", img)
+    
     height = img.shape[0]
     width = img.shape[1]
 
@@ -209,12 +213,13 @@ def main():
     if(len(sys.argv)>2):
         k_value = int(sys.argv[2]) # set the k num from the input
         
-    data = img_to_data(img, height, width)
+    data = img_to_data(img, height, width)  
     new_data = k_means_img(data, k_value)
 
     new_img = data_to_img(data, height, width)
     clusters_img = get_clusters_img(new_data, k_value, height, width)
 
+    print("saving the images")
     # save the images
     cv.imwrite("result/before.png", img)
     cv.imwrite("result/after.png", new_img)
